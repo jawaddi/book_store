@@ -1,5 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
+from werkzeug.security import generate_password_hash
+import secrets
 
 db = SQLAlchemy()
 
@@ -8,7 +10,7 @@ def init_app(app):
     db.app = app
     db.init_app(app)
 
-class User(db.Model):
+class User(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key=True)
     username = db.Column(db.String(255),unique=True)
     password = db.Column(db.String(255))
@@ -28,3 +30,8 @@ class User(db.Model):
             'api_key':self.api_key,
             'is_active':self.is_active
         }
+    
+    def update_api_key(self):
+       self.api_key = secrets.token_urlsafe(64)
+
+
