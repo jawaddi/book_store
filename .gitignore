@@ -10,6 +10,12 @@ user/user_v/
 book/book_v/
 order/order_v/
 
+# Flask migrations folder
+user/migrations/
+
+# SQLite database file (if using SQLite)
+use/database/
+*.db
 # Ignore environment configuration files
 .env
 *.env
