@@ -1,0 +1,47 @@
+# General Python ignores
+__pycache__/
+*.py[cod]
+*.pyo
+*.log
+*.sqlite3
+
+# Ignore virtual environments
+user/user_v/
+book/book_v/
+order/order_v/
+
+# Ignore environment configuration files
+.env
+*.env
+
+# Ignore compiled or binary files
+*.so
+*.dll
+*.dylib
+
+# Ignore IDE/project settings
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore pip lock files (if not required)
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Ignore test and coverage files
+htmlcov/
+.coverage
+*.cover
+.tox/
+.nox/
+
+# Ignore build artifacts
+*.egg-info/
+dist/
+build/
