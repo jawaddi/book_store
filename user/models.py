@@ -10,7 +10,7 @@ def init_app(app):
 
 class User(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    username = db.column(db.String(255))
+    username = db.Column(db.String(255),unique=True)
     password = db.Column(db.String(255))
     is_admin = db.Column(db.Boolean)
     api_key = db.Column(db.String(255),unique=True,nullable=True)
