@@ -1,20 +1,46 @@
 from flask import Blueprint ,request,jsonify
+from models import Book,db
 
 book_blueprint = Blueprint('book_api_routes',__name__,url_prefix="/api/book")
 
 @book_blueprint.route("/all",methods=['GET'])
 def get_all_books():
-    return "all books"
+    all_books = Book.query.all()
+    books = [book.serialize() for book in all_books]
+    response = {"books":books}
+    return jsonify(response)
 
 
 @book_blueprint.route("/create",methods=['POST'])
 def create_books():
-    return "create book"
+    try:
+        book = Book()
+        book.name = request.form['name']
+        book.slug = request.form['slug']
+        book.image = request.form['image']
+        book.price = request.form['price']
+        db.session.add(book)
+        db.session.commit()
 
-@book_blueprint.route("/<slug>",methods=['GET'])
-def book_details():
-    return "book details"
+        response = {
+            "message":"book create",
+            "book":book.serialize()
+        }
+    except Exception as e:
+        print(str(e))
+        response = {"message":"creation has been failed"}
+    
+    return jsonify(response)
 
-@book_blueprint.route("/",methods=['GET'])
-def index():
-    return "hello"
+
+@book_blueprint.route('/<slug>',methods=['GET'])
+def book_details(slug):
+
+    book = Book.query.filter_by(slug=slug).first()
+    if book:
+        respose = jsonify({"book detials":book.serialize()})
+    else:
+        respose= jsonify({"message":"book not found"})
+    return respose
+
+

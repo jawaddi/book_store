@@ -10,7 +10,7 @@ class Book(db.Model):
     id=db.Column(db.Integer,primary_key=True,nullable=False)
     name=db.Column(db.String(255),unique=True,nullable=False)
     slug=db.Column(db.String(255),unique=True,nullable=False)
-    prince=db.Column(db.Integer,nullable=True)
+    price=db.Column(db.Integer,nullable=True)
     image=db.Column(db.String(255))
 
     def __repr__(self):
@@ -21,6 +21,6 @@ class Book(db.Model):
             'id':self.id,
             'name':self.name,
             'slug':self.slug,
-            'prince':self.prince,
-            'image':self.imag
+            'price':self.price,
+            'image':self.image
         }
