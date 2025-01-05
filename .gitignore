@@ -16,6 +16,9 @@ user/migrations/
 # SQLite database file (if using SQLite)
 use/database/
 *.db
+
+book/database/
+*.db
 # Ignore environment configuration files
 .env
 *.env
