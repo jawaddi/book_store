@@ -17,7 +17,6 @@ def add_order_item():
 
 
 @order_Blueprint.route("/checkout",methods=["POST"])
-
 def checkout():
     return "checkout"
 
