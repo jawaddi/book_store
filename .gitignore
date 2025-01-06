@@ -13,9 +13,13 @@ order/order_v/
 # Flask migrations folder
 user/migrations/
 book/migrations/
+order/migrations/
 
 # SQLite database file (if using SQLite)
 use/database/
+*.db
+
+order/database/
 *.db
 
 book/database/
