@@ -25,9 +25,14 @@ class OrderItem(db.Model):
     order_id = db.Column(db.Integer,db.ForeignKey('order.id'))
     book_id = db.Column(db.Integer)
     quantity = db.Column(db.Integer)
+
+    def __init__(self,book_id,quantity):
+        self.book_id=book_id
+        self.quantity=quantity
+
         
     def serialize(self):
         return {
-            'product':self.book_id,
+            'book':self.book_id,
             'quantity':self.quantity
         }
