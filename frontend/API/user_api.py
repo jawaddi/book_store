@@ -43,6 +43,6 @@ class UserClient():
     
     @staticmethod
     def user_exists(username):
-        url = USER_API_URL+'/api/user'+username+'/exists'
+        url = USER_API_URL+'/api/user/'+username+'/exists'
         response = requests.get(url=url)
         return response.status_code == 200
